@@ -32,7 +32,7 @@
     <td>|</td>
     <td><%= animal.breed %></td>
     <td>|</td>
-      <td><a href="/edit_animals/<%= animal.id %>">Edit Animal</a></td>
+    <td><form method="post" action="/pet/delete/<%= animal.id %>"><input type="submit" name="delete" value="Delete Animal" /></form></td>
   </tr>
   <% end %>
 </table>

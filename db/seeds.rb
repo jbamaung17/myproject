@@ -1,5 +1,6 @@
 require_relative("../models/animals.rb")
 require_relative("../models/owners.rb")
+require_relative("../models/adoptions.rb")
 require("pry-byebug")
 
 Animal.delete_all()
@@ -63,8 +64,7 @@ animal5 = Animal.new({
 owner1 = Owner.new({
   "name" => "Milan Kundera",
   "address" => "42 Redburn, Bonhill, G83 4PX",
-  "telephone_number" => "07899384628",
-  "pets_id" => animal4.id
+  "telephone_number" => "07899384628"
   })
 
   owner1.save()
@@ -72,8 +72,7 @@ owner1 = Owner.new({
 owner2 = Owner.new({
   "name" => "Phil McCracken",
   "address" => "123 Fake Street, Renton, G82 9BT",
-  "telephone_number" => "07221347425",
-  "pets_id" => animal2.id
+  "telephone_number" => "07221347425"
   })
 
   owner2.save()
@@ -81,13 +80,17 @@ owner2 = Owner.new({
 owner3 = Owner.new({
   "name" => "Pat McGroin",
   "address" => "123 Cocksburn Street, Echelfechan, EH13 9TY",
-  "telephone_number" => "07389750097",
-  "pets_id" => animal1.id
+  "telephone_number" => "07389750097"
   })
 
   owner3.save()
 
-  Owner.all
+adoption1 = Adoption.new({
+  "animal_id" => animal1.id,
+  "owner_id" => owner3.id
+  })
+
+  adoption1.save()
 
 binding.pry
 nil

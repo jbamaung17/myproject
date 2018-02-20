@@ -1,0 +1,22 @@
+<form  action="/add-adoption" method="post">
+  <label>Select Owner:
+  <select name="owner_id">
+    <% for owner in @owners %>
+    <option value="<%= owner.id %>"><%= owner.name %></option>
+    <% end %>
+  </select>
+</label>
+
+<label>
+  Select Pet:
+  <select name="animal_id">
+    <% for animal in @animals %>
+    <% if animal.status == "available" %>
+    <option value="<%= animal.id %>"><%= animal.name %></option>
+    <% end %>
+    <% end %>
+  </select>
+</label>
+
+<input type="submit" value="Adopt">
+</form>

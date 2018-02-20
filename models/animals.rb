@@ -45,6 +45,12 @@ class Animal
     SqlRunner.run(sql, values)
   end
 
+  def self.available()
+    sql = "SELECT FROM animals WHERE status = $1"
+    values = [@status = "available"]
+    SqlRunner.run(sql, values)
+  end
+
   def self.all()
     sql = "SELECT * FROM animals"
     results = SqlRunner.run(sql)
@@ -54,6 +60,13 @@ class Animal
   def self.delete_all()
     sql = "DELETE FROM animals"
     SqlRunner.run(sql)
+  end
+
+  def self.find( id )
+    sql = "SELECT * FROM animals WHERE id = $1"
+    values = [id]
+    result = SqlRunner.run(sql, values)
+    return Animal.new( result.first)
   end
 
 end

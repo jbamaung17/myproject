@@ -1,16 +1,25 @@
 require( 'sinatra' )
 require( 'sinatra/contrib/all' )
+require('pry-byebug')
 require_relative('models/animals.rb')
 require_relative('models/owners.rb')
+require_relative('models/adoptions.rb')
 
 #index
 get "/" do
   erb( :index )
 end
 
-#pet-search
-get "/pet-search" do
-  erb( :pet_search )
+#new
+get "/add_pet" do
+  erb( :add_pet)
+end
+
+#create
+post "/add_pet" do
+  @animals = Animal.new(params)
+  @animals.save()
+  redirect "/"
 end
 
 #available-pets
@@ -25,25 +34,17 @@ get "/veterinary-care" do
   erb( :vet_care)
 end
 
-#edit-pets
-post "/edit-pets" do
-  erb( :pet_edit)
-end
-
 #all-pets
 get "/all-pets" do
   @animals = Animal.all()
   erb( :all_pets)
 end
 
-#adopters-search
-get "/owner-search" do
-  erb( :owner_search)
-end
-
-#edit-owners
-post "/edit-owners" do
-  erb( :edit_owners)
+#delete-pet
+post "/pet/delete/:id" do
+  @animal = Animal.find(params['id'].to_i)
+  @animal.destroy()
+  redirect "/all-pets"
 end
 
 #all-owners
@@ -54,5 +55,21 @@ end
 
 #successful-introductions
 get "/successful-introductions" do
+  @owners = Owner.all()
+  @adoptions = Adoption.all()
   erb( :successful_introductions)
+end
+
+#add-adoption-page
+get "/add-adoption" do
+  @animals = Animal.all
+  @owners = Owner.all
+  erb( :add_adoption)
+end
+
+#add-adoption-make
+post "/add-adoption" do
+  adoption = Adoption.new(params)
+  adoption.save()
+  redirect "/"
 end

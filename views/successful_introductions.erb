@@ -1,1 +1,14 @@
-<h1>Here are all the pets that have owners now. Yay!</h1>
+<table>
+  <tr>
+    <th>Owner</th>
+    <th></th>
+    <th>Pet</th>
+  </tr>
+  <% for adoption in @adoptions %>
+  <tr>
+    <td><%= adoption.owners.name %></td>
+    <td>|</td>
+    <td><%= adoption.animals.name %></td>
+  </tr>
+  <% end %>
+</table>

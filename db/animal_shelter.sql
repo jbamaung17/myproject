@@ -1,3 +1,4 @@
+DROP TABLE adoptions;
 DROP TABLE owners;
 DROP TABLE animals;
 
@@ -15,6 +16,11 @@ CREATE TABLE owners(
   id SERIAL PRIMARY KEY,
   name VARCHAR(255),
   address VARCHAR(255),
-  telephone_number VARCHAR(255),
-  pets_id INT REFERENCES animals(id) ON DELETE CASCADE
+  telephone_number VARCHAR(255)
+);
+
+CREATE TABLE adoptions(
+  id SERIAL PRIMARY KEY,
+  animal_id INT REFERENCES animals(id) ON DELETE CASCADE,
+  owner_id INT REFERENCES owners(id) ON DELETE CASCADE
 );
