@@ -1,0 +1,28 @@
+<h1>All the owners</h1>
+
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th></th>
+    <th>Name</th>
+    <th></th>
+    <th>Address</th>
+    <th></th>
+    <th>Telephone Number</th>
+
+  </tr>
+    <% for owner in @owners %>
+    <tr>
+    <td><%= owner.id %></td>
+    <td>|</td>
+    <td><%= owner.name %></td>
+    <td>|</td>
+    <td><%= owner.address %></td>
+    <td>|</td>
+    <td><%= owner.telephone_number %></td>
+    <td>|</td>
+      <td><a href="/edit_owners/<%= owner.id %>">Edit Adopter</a></td>
+  </tr>
+  <% end %>
+</table>

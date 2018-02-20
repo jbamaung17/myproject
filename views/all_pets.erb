@@ -1,0 +1,38 @@
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th></th>
+    <th>Name</th>
+    <th></th>
+    <th>Gender</th>
+    <th></th>
+    <th>Admission Date</th>
+    <th></th>
+    <th>Status</th>
+    <th></th>
+    <th>Species</th>
+    <th></th>
+    <th>Breed</th>
+
+  </tr>
+    <% for animal in @animals %>
+    <tr>
+    <td><%= animal.id %></td>
+    <td>|</td>
+    <td><%= animal.name %></td>
+    <td>|</td>
+    <td><%= animal.gender %></td>
+    <td>|</td>
+    <td><%= animal.admission_date %></td>
+    <td>|</td>
+    <td><%= animal.status %></td>
+    <td>|</td>
+    <td><%= animal.species %></td>
+    <td>|</td>
+    <td><%= animal.breed %></td>
+    <td>|</td>
+    <td><a href="/edit_animals/<%= animal.id %>">Edit Animal</a></td>
+  </tr>
+  <% end %>
+</table>
