@@ -71,5 +71,8 @@ end
 post "/add-adoption" do
   adoption = Adoption.new(params)
   adoption.save()
+  animal = Animal.find(params['animal_id'].to_i)
+  animal.adopt
+  animal.save()
   redirect "/"
 end

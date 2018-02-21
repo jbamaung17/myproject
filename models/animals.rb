@@ -45,9 +45,16 @@ class Animal
     SqlRunner.run(sql, values)
   end
 
+  def adopt
+    if @status == "available"
+      @status = "adopted"
+      end
+      update
+  end
+
   def self.available()
     sql = "SELECT FROM animals WHERE status = $1"
-    values = [@status = "available"]
+    values = [@status]
     SqlRunner.run(sql, values)
   end
 

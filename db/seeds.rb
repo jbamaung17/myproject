@@ -21,7 +21,7 @@ animal2 = Animal.new({
   "name" => "Bumble",
   "gender" => "male",
   "admission_date" => "19 November 2017",
-  "status" => "adopted",
+  "status" => "veterinary care",
   "species" => "cat",
   "breed" => "domestic short hair"
   })
@@ -43,7 +43,7 @@ animal4 = Animal.new({
   "name" => "Daisy",
   "gender" => "female",
   "admission_date" => "14 February 2018",
-  "status" => "adopted",
+  "status" => "available",
   "species" => "rabbit",
   "breed" => "cross breed"
 })
